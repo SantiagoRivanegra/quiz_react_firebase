@@ -5,12 +5,16 @@ import OpctionDifficulty from './OptionDifficulty'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const FirstQuiz = () => {
   const navigate = useNavigate()
   const [quizType, setQuizType] = useState('')
   const [num, setNum] = useState(10);
   const [quizDiff, setQuizDiff] = useState('')
   const [quizArray, setQuizArray] = useState([])
+  const [playerName, setPlayerName] = useState('')
 
   const handleChangeCategory = (e)=> {
     console.log(e.target.value)
@@ -27,7 +31,13 @@ const FirstQuiz = () => {
     setQuizDiff(e.target.value)
   }
 
+  const getPlayerName = (value) => {
+    setPlayerName(value)
+    localStorage.setItem('Playername', value)
+  }
+
   const getQuiz = ()=> {
+    if(playerName){
     axios.get(`https://opentdb.com/api.php?amount=${num}&difficulty=${quizDiff}&category=${quizType}`)
     .then((response) => {
       setQuizArray(response.data.results)
@@ -41,13 +51,28 @@ const FirstQuiz = () => {
             }
           })
     })
+  } else {
+    toast.error("Please Fill the Player's Name", {
+      position: "top-right",
+      autoClose: 1000,
+    })
+    }
   }
 
   return (
     <div>
+      <ToastContainer />
       <h1 className="italic hover:not-italic text-center">FirstQuiz</h1>
 
       <section className="flex flex-col w-auto items-center">
+
+      <input 
+        className="border-solid border-2 border-zinc-500"
+        placeholder="Player Name"
+        type='text'
+        onChange={(e) => getPlayerName(e.target.value)}
+        value = {playerName}
+      />
 
         <InputNumQuestion
           num={num}
@@ -69,7 +94,14 @@ const FirstQuiz = () => {
           data-bs-toggle="tooltip" data-bs-placement="bottom" 
           title="Play"
           onClick={getQuiz}  
-        >GET QUIZ</button>
+        >GET QUIZ
+        </button>
+
+        <button 
+          className="btn btn-primary w-[200px] bg-sky-200 "
+          onClick={() => navigate('/quiz/results')}  
+        >CHECK LEADER BOARD
+        </button>
       </section>
     </div>
   )

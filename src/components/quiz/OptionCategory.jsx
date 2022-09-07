@@ -12,6 +12,7 @@ const OptionCategory = ({
         label="Quiz Category"
         onChange={handleChangeCategory}
       >
+        <option hidden selected defaultValue='name'>Name of Category</option>
         <option disabled selected defaultValue='name'>Name of Category</option>
         <option value={9}>General knowledge</option>
         <option value={10}>Entertaiment: Books</option>

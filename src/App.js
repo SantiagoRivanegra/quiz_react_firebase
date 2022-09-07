@@ -8,6 +8,8 @@ import FirstQuiz from './components/quiz/FirstQuiz'
 import PlayQuiz from './components/quiz/PlayQuiz.jsx'
 import Results from './components/quiz/Results.jsx'
 
+import { app } from './firebase-config'
+
 function App() {
   return (
     <BrowserRouter>
