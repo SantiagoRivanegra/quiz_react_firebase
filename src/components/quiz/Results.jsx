@@ -32,37 +32,40 @@ const Results = () => {
   }
 
   return (
-    <div>
+    <div className="bg-red-200 h-[100vh]">
+
       {finalResult ? (
-        <h2>Final Score: {finalResult}</h2>
+        <h2 className="ml-4 p-6 text-2xl border-slate-900">Final Score: {finalResult}</h2>
       ) : (
         ''
       )}
+      <div className="flex relative">
+        <h2 className="m-6 text-2xl border-b border-slate-900">Leader Board: </h2>
+        <button
+          className="cursor-pointer m-6 border bg-sky-400 hover:bg-sky-600 w-40"
+          onClick={playAgain}
+        >
+          Play Again
+        </button>
 
-      <button
-        onClick={playAgain}
-      >
-        Play Again
-      </button>
-
-      <h2>Leader Board: </h2>
-      <table className="table-auto border-separate border border-slate-500 m-4">
-      <thead className="m-4">
+      </div>
+      <table className="table-auto border-separate border-4 border-slate-500 m-4 w-[900px] border-spacing-y-1 border-separate ">
+      <thead>
           <tr>
-            <th>userName</th>
-            <th>Difficulty</th>
-            <th>Final Score</th>
-            <th>Category</th>
+            <th className="border-b border-black">User Name</th>
+            <th className="border-b border-black">Difficulty</th>
+            <th className="border-b border-black">Final Score</th>
+            <th className="border-b border-black">Category</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="text-center">
         {leaderBoardData.map((person) => {
           return(
           <tr>
-            <td>{person.playerName}</td>
-            <td>{person.difficulty}</td>
-            <td>{person.finalScore}</td>
-            <td>{person.category}</td>
+            <td className="border-b border-black">{person.playerName}</td>
+            <td className="border-b border-black">{person.difficulty}</td>
+            <td className="border-b border-black">{person.finalScore}</td>
+            <td className="border-b border-black">{person.category}</td>
           </tr>
           )
         })}
