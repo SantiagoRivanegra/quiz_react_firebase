@@ -59,22 +59,9 @@ const PlayQuiz = () => {
 
   return (
     <div>
-      <h1>PlayQuiz</h1>
-      <h1>Score: {result}</h1>
-      {/* <button 
-        className="btn btn-primary w-[200px] bg-blue-500 mr-[5px]"
-        onClick={prevQuestion}
-        disabled={questionCounter === 1 ? true : false}  
-      >Previous Question
-      </button>
-
-      <button 
-        className="btn btn-primary w-[200px] bg-green-300"
-        onClick={nextQuestion}
-        disabled={questionCounter === Number(totalQuiz) ? true : false} 
-      >Next Question</button> */}
-
-      <h2>Question Number: {questionCounter}</h2>
+      <h1 className="text-center text-4xl border border-b italic hover:not-italic">PlayQuiz</h1>
+      <h1>Your Current Score: {result}</h1>
+      <h2>Question Number: {questionCounter} of {totalQuiz}</h2>
       <h3>Difficulty Level: {quizDiff}</h3>
 
       <Card 

@@ -21,23 +21,34 @@ const FirstQuiz = () => {
     setQuizType(e.target.value)
   }
 
-  const handleChangeNumQuestions = (e)=> {
-    console.log(e.target.value)
-    setNum(e.target.value)
-  }
-
-  const handleChangeDifficulty = (e)=> {
-    console.log(e.target.value)
-    setQuizDiff(e.target.value)
-  }
-
   const getPlayerName = (value) => {
     setPlayerName(value)
     localStorage.setItem('Playername', value)
   }
 
   const getQuiz = ()=> {
-    if(playerName){
+    if(!quizDiff){
+      toast.error("Insert difficulty", {
+        position: "top-right",
+        autoClose: 1000,
+        pauseOnHover: false,
+      })
+    }
+    if(!playerName){
+      toast.error("Please Fill the Player's Name", {
+        position: "top-right",
+        autoClose: 1000,
+        pauseOnHover: false,
+      })
+    }
+    if(!quizType){
+      toast.error("Insert category", {
+        position: "top-right",
+        autoClose: 1000,
+        pauseOnHover: false,
+      })
+    }
+    if(playerName && quizType && quizDiff){
     axios.get(`https://opentdb.com/api.php?amount=${num}&difficulty=${quizDiff}&category=${quizType}`)
     .then((response) => {
       setQuizArray(response.data.results)
@@ -51,12 +62,7 @@ const FirstQuiz = () => {
             }
           })
     })
-  } else {
-    toast.error("Please Fill the Player's Name", {
-      position: "top-right",
-      autoClose: 1000,
-    })
-    }
+  }
   }
 
   return (
@@ -76,7 +82,7 @@ const FirstQuiz = () => {
 
         <InputNumQuestion
           num={num}
-          handleChangeNumQuestions={handleChangeNumQuestions}
+          setNum={setNum}
         />
         
         <OpctionCategory 
@@ -86,22 +92,22 @@ const FirstQuiz = () => {
         
         <OpctionDifficulty 
           quizDiff={quizDiff}
-          handleChangeCategory={handleChangeDifficulty}
+          setQuizDiff={setQuizDiff}
         />
 
-        <button 
-          className="btn btn-primary w-[200px] bg-red-200 "
-          data-bs-toggle="tooltip" data-bs-placement="bottom" 
-          title="Play"
-          onClick={getQuiz}  
-        >GET QUIZ
-        </button>
+        <div>
+          <button 
+            className="btn btn-primary w-[200px] bg-red-200 "
+            onClick={getQuiz}  
+          >GET QUIZ
+          </button>
 
-        <button 
-          className="btn btn-primary w-[200px] bg-sky-200 "
-          onClick={() => navigate('/quiz/results')}  
-        >CHECK LEADER BOARD
-        </button>
+          <button 
+            className="btn btn-primary w-[200px] bg-sky-200 "
+            onClick={() => navigate('/quiz/results')}  
+          >CHECK LEADER BOARD
+          </button>
+        </div>
       </section>
     </div>
   )
