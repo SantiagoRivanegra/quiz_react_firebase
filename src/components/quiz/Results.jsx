@@ -32,17 +32,19 @@ const Results = () => {
   }
 
   return (
-    <div className="bg-red-200 h-[100vh]">
+    <div className="bg-slate-700 h-[100vh] text-center">
 
-      {finalResult ? (
-        <h2 className="ml-4 p-6 text-2xl border-slate-900">Final Score: {finalResult}</h2>
-      ) : (
-        ''
-      )}
-      <div className="flex relative">
+      <div className="flex flex-col relative">
         <h2 className="m-6 text-2xl border-b border-slate-900">Leader Board: </h2>
+
+        {finalResult ? (
+          <h2 className="ml-4 p-6 text-2xl border-slate-900">Final Score: {finalResult}</h2>
+        ) : (
+          ''
+        )}
+
         <button
-          className="cursor-pointer m-6 border bg-sky-400 hover:bg-sky-600 w-40"
+          className="cursor-pointer m-6 border bg-slate-500 text-slate-900 hover:bg-slate-600 w-40 font-semibold"
           onClick={playAgain}
         >
           Play Again
@@ -52,20 +54,20 @@ const Results = () => {
       <table className="table-auto border-separate border-4 border-slate-500 m-4 w-[900px] border-spacing-y-1 border-separate ">
       <thead>
           <tr>
-            <th className="border-b border-black">User Name</th>
-            <th className="border-b border-black">Difficulty</th>
-            <th className="border-b border-black">Final Score</th>
-            <th className="border-b border-black">Category</th>
+            <th className="border-b border-black font-bold">User Name</th>
+            <th className="border-b border-black font-bold">Difficulty</th>
+            <th className="border-b border-black font-bold">Final Score</th>
+            <th className="border-b border-black font-bold">Category</th>
           </tr>
         </thead>
         <tbody className="text-center">
         {leaderBoardData.map((person) => {
           return(
           <tr>
-            <td className="border-b border-black">{person.playerName}</td>
-            <td className="border-b border-black">{person.difficulty}</td>
-            <td className="border-b border-black">{person.finalScore}</td>
-            <td className="border-b border-black">{person.category}</td>
+            <td className="border-b border-black font-semibold">{person.playerName}</td>
+            <td className="border-b border-black font-semibold">{person.difficulty}</td>
+            <td className="border-b border-black font-semibold">{person.finalScore}</td>
+            <td className="border-b border-black font-semibold">{person.category}</td>
           </tr>
           )
         })}

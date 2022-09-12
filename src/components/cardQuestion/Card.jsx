@@ -35,7 +35,7 @@ const Card = ({
     <div className="text-center">
       {questionsArray.length >= 1 ? (
         <section>
-          <h2>Category: {questionsArray[questionCounter - 1].category}</h2>      
+          <h2 className="text-left mb-4 text-2xl font-semibold">Category: {questionsArray[questionCounter - 1].category}</h2>      
           
           <h2 className="font-bold">Question: {questionsArray[questionCounter - 1].question}</h2>
           {[
@@ -44,7 +44,7 @@ const Card = ({
             ].map((options,i) => {
               return (
                 <div 
-                  className="flex flex-row border-dashed border-2 border-zinc-700 rounded-xl text-center m-[5px] hover:bg-green-200 cursor-pointer"
+                  className="border-dashed border-2 border-slate-900 rounded-xl text-center m-[5px] hover:bg-slate-500 cursor-pointer font-semibold w-[500px]"
                   key={i}
                   onClick={() => handleOption(options)}                
                 >

@@ -66,15 +66,15 @@ const FirstQuiz = () => {
   }
 
   return (
-    <div>
+    <div className="bg-slate-700 h-[100vh] text-center">
       <ToastContainer />
-      <h1 className="italic hover:not-italic text-center">FirstQuiz</h1>
+      <h1 className="italic hover:not-italic text-center text-8xl mb-6">FirstQuiz</h1>
 
       <section className="flex flex-col w-auto items-center">
 
       <input 
-        className="border-solid border-2 border-zinc-500"
-        placeholder="Player Name"
+        className="border-solid border-2 border-zinc-400 bg-slate-500 text-slate-900 hover:bg-slate-600 font-bold placeholder:text-slate-900 placeholder:italic mb-4"
+        placeholder="PlayerName..."
         type='text'
         onChange={(e) => getPlayerName(e.target.value)}
         value = {playerName}
@@ -97,13 +97,13 @@ const FirstQuiz = () => {
 
         <div>
           <button 
-            className="btn btn-primary w-[200px] bg-red-200 "
+            className="btn btn-primary border-solid border-2 border-zinc-400 w-[200px] bg-[#243B55] hover:bg-[#2c3e50] m-4 font-semibold"
             onClick={getQuiz}  
           >GET QUIZ
           </button>
 
           <button 
-            className="btn btn-primary w-[200px] bg-sky-200 "
+            className="btn btn-primary border-solid border-2 border-zinc-400 w-[200px] bg-zinc-500 m-4 font-semibold hover:bg-zinc-600"
             onClick={() => navigate('/quiz/results')}  
           >CHECK LEADER BOARD
           </button>

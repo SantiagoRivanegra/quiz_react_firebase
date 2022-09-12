@@ -29,12 +29,6 @@ const PlayQuiz = () => {
     setPlayerName(localStorage.getItem('Playername'))
   }, [])
 
-  // const prevQuestion = () => {
-  //   if(questionCounter > 1){
-  //     setQuestionCounter(questionCounter - 1)
-  //   }
-  // }
-
   const nextQuestion = () => {
     if(questionCounter < totalQuiz){
       setQuestionCounter(questionCounter + 1)
@@ -58,11 +52,12 @@ const PlayQuiz = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-center text-4xl border border-b italic hover:not-italic">PlayQuiz</h1>
-      <h1>Your Current Score: {result}</h1>
-      <h2>Question Number: {questionCounter} of {totalQuiz}</h2>
-      <h3>Difficulty Level: {quizDiff}</h3>
+    <div className="flex flex-col 
+    bg-slate-700 h-[100vh]">
+      <h1 className="mb-6 text-center text-4xl border-b border-slate-900 italic hover:not-italic">PlayQuiz</h1>
+      <h2 className="text-center mb-4 text-2xl font-semibold">Your Current Score: {result}</h2>
+      <h2 className="mb-4 text-2xl font-semibold">Question Number: {questionCounter} of {totalQuiz}</h2>
+      <h2 className="mb-4 text-2xl font-semibold">Difficulty Level: {quizDiff}</h2>
 
       <Card 
         questionsArray={questionsArray}
@@ -74,7 +69,7 @@ const PlayQuiz = () => {
 
       {questionCounter === Number(totalQuiz) ? (
         <button 
-          className="btn btn-primary w-[200px] bg-sky-500"
+          className="cursor-pointer m-6 border bg-slate-500 text-slate-900 hover:bg-slate-600 w-40 font-semibold"
           onClick={submitQuiz}
         >SUBMIT</button>
       ) : (

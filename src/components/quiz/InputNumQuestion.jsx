@@ -22,11 +22,19 @@ const InputNumQuestion = ({
     }
   }
 
+  const info = () => {
+    toast.info('Insert number between 5 and 50', {
+      position: "top-center",
+      autoClose: 2000,
+      pauseOnHover: false,
+    })
+  }
+
   return (
     <div>
       <ToastContainer />
       <input
-        className="border border-black" 
+        className="border-solid border-2 border-zinc-400 bg-slate-500 text-slate-900 hover:bg-slate-600 font-bold mb-4" 
         placeholder="Number of Questions"
         type='number'
         value = {num}
@@ -37,6 +45,7 @@ const InputNumQuestion = ({
         className="btn btn-primary rounded-[100%] border border-black ml-4"
         data-bs-toggle="tooltip" data-bs-placement="right" 
         title="Between 5 & 50"
+        onClick={info}
       >
            i
       </button>

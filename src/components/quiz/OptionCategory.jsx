@@ -7,6 +7,7 @@ const OptionCategory = ({
   return (
     <div>
       <select
+        className="border-solid border-2 border-zinc-400 bg-slate-500 text-slate-900 hover:bg-slate-600 font-bold mb-4"
         id="categoryName"
         value={quizType}
         label="Quiz Category"

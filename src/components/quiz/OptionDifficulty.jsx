@@ -27,6 +27,7 @@ const OptionCategory = ({
     <div>
       <ToastContainer />
       <select
+        className="border-solid border-2 border-zinc-400 bg-slate-500 text-slate-900 hover:bg-slate-600 font-bold mb-4"
         id="difficulty"
         value={quizDiff}
         label="Difficulty Level"
