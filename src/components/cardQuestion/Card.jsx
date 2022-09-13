@@ -37,19 +37,20 @@ const Card = ({
         <section>
           <h2 className="text-left mb-4 text-2xl font-semibold">Category: {questionsArray[questionCounter - 1].category}</h2>      
           
-          <h2 className="font-bold">Question: {questionsArray[questionCounter - 1].question}</h2>
+          <h2 className="items-center font-bold">Question: {questionsArray[questionCounter - 1].question}</h2>
           {[
             ...questionsArray[questionCounter-1].incorrect_answers,
             questionsArray[questionCounter-1].correct_answer
             ].map((options,i) => {
               return (
                 <div 
-                  className="border-dashed border-2 border-slate-900 rounded-xl text-center m-[5px] hover:bg-slate-500 cursor-pointer font-semibold w-[500px]"
-                  key={i}
-                  onClick={() => handleOption(options)}                
+                  className="flex flex-col border-dashed border-2 border-slate-900 rounded-xl text-center m-[5px] hover:bg-slate-500 cursor-pointer font-semibold w-[500px]"
+                  key={i}                
                 >
                 <ToastContainer />
                 <button
+                  className="items-center"
+                  onClick={() => handleOption(options)}
                 >
                   {options}
                 </button>

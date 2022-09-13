@@ -1,9 +1,17 @@
-import React, {Fragment} from 'react'
+import React, { Fragment } from 'react'
 import { Helmet } from 'react-helmet'
 import { HiOutlineCube } from 'react-icons/hi'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+
+import { useAuth } from '../context/authContext'
 
 const LandingPage = () => {
+  const navigate = useNavigate()
+
+  const signup = () => {
+    navigate('/signup')
+  }
+
   return (
       <Fragment>
         <Helmet>
@@ -29,10 +37,10 @@ const LandingPage = () => {
                   <button className="btn btn-primary border-[1px] border-black bg-orange-500 rounded-[30px] cursor-pointer p-4 text-center w-[100%] hover:bg-orange-600"
                   >Login</button>
               </Link>
-              <Link to='/register'>
-                <button className="btn btn-primary border-[1px] border-black bg-yellow-400 rounded-[30px] cursor-pointer p-4 text-center w-[100%] hover:bg-yellow-500"
+                <button 
+                  className="btn btn-primary border-[1px] border-black bg-yellow-400 rounded-[30px] cursor-pointer p-4 text-center w-[100%] hover:bg-yellow-500"
+                  onClick={signup}
                 >Signup</button>
-              </Link>
             </div>
           </section>
         </div>
