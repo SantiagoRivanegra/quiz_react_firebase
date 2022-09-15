@@ -8,6 +8,7 @@ import FirstQuiz from './components/quiz/FirstQuiz'
 import PlayQuiz from './components/quiz/PlayQuiz.jsx'
 import Results from './components/quiz/Results.jsx'
 import UserRegister from './components/register/userRegister'
+import UserLogin from './components/login/UserLogin'
 
 import { AuthProvider } from './components/context/authContext'
 
@@ -21,6 +22,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />}></Route>
             <Route path="/signup" element={<UserRegister />}></Route>
+            <Route path="/login" element={<UserLogin />}></Route>
             <Route path="/quiz" element={<FirstQuiz />}></Route>
             <Route path="/quiz/play" element={<PlayQuiz />}></Route>
             <Route path="/quiz/results" element={<Results />}></Route>

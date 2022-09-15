@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-
 import { useAuth } from '../context/authContext'
+import { useNavigate } from 'react-router-dom'
 
 const UserRegister = () => {
 
@@ -14,17 +13,15 @@ const UserRegister = () => {
   const navigate = useNavigate()
   const [error, setError] = useState()
 
-  const handleChange = ({ target:{ name, value } }) => {
-    setUser({ ...user, [name]: value })
-  }
+  const handleChange = ({target:{ name, value }}) =>  setUser({ ...user, [name]: value })
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setError('');
     try {
       await signup(user.email, user.password);
-      navigate("/");
-    } catch (error) {
+      navigate('/');
+    } catch(error) {
       setError(error.message);
     }
   }
@@ -36,8 +33,8 @@ const UserRegister = () => {
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email: </label>
         <input 
-          className="bg-slate-700" 
-          type="text" 
+          className="bg-slate-400 font-black font-medium placeholder:text-slate-700" 
+          type="email" 
           name="email" 
           placeholder="youremail@example.com" 
           onChange={handleChange}
@@ -45,10 +42,11 @@ const UserRegister = () => {
 
         <label htmlFor="password">Password: </label>
         <input 
-          className="bg-slate-700" 
+          className="bg-slate-400 font-black font-medium placeholder:text-slate-700" 
           type="password" 
           name="password" 
-          id="password" 
+          id="password"
+          placeholder="******" 
           onChange={handleChange}
         />
 
