@@ -8,18 +8,33 @@ import { useAuth } from '../context/authContext'
 const LandingPage = () => {
   const navigate = useNavigate()
 
+  const { user, logout, loading } = useAuth()
+
   const signup = () => {
     navigate('/signup')
   }
+
+  const handleLogout = async () => {
+    await logout()
+  }
+
+  if(loading) return <h1>loading</h1>
 
   return (
       <Fragment>
         <Helmet>
           <title>
-            Welcome to Quiz App
+            Welcome {user.email} to Quiz App
           </title>
         </Helmet>
         <div className="bg-origin-border h-screen w-screen bg-bg-landing bg-cover bg-no-repeat bg-center flex items-center justify-around">
+          {
+            user.email && (<button
+              onClick={handleLogout}
+            >
+              LogOut
+            </button>)
+          }
           <section className="bg-gray-500/50 h-[80%] w-[35%] pl-8 pr-8">
             <div className="flex justify-center">
               <span><HiOutlineCube className="text-9xl"/></span>

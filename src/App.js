@@ -13,6 +13,7 @@ import UserLogin from './components/login/UserLogin'
 import { AuthProvider } from './components/context/authContext'
 
 import { app } from './firebase-config'
+import { ProtectedRoute } from './components/quiz/ProtectedRoute';
 
 function App() {
   return (
@@ -20,7 +21,11 @@ function App() {
       <div className="App">
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<LandingPage />}></Route>
+            <Route path="/" element={
+              <ProtectedRoute>
+                <LandingPage />
+              </ProtectedRoute>
+            }></Route>
             <Route path="/signup" element={<UserRegister />}></Route>
             <Route path="/login" element={<UserLogin />}></Route>
             <Route path="/quiz" element={<FirstQuiz />}></Route>
