@@ -18,7 +18,6 @@ const OptionCategory = ({
         pauseOnHover: false,
       })
     } else {
-      console.log(e.target.value + 'setQuizDiff')
       setQuizDiff(e.target.value)
     }
   }

@@ -22,12 +22,13 @@ const UserLogin = () => {
       await login(user.email, user.password);
       navigate('/');
     } catch(error) {
+      console.log(error)
       setError(error.message);
     }
   }
 
   return (
-    <div>
+    <div className="bg-slate-700 h-[100vh] text-center">
       {error && <p>{error}</p>}
 
       <form onSubmit={handleSubmit}>

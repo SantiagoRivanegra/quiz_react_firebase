@@ -63,7 +63,7 @@ const Results = () => {
         <tbody className="text-center">
         {leaderBoardData.map((person) => {
           return(
-          <tr>
+          <tr key={person.id}>
             <td className="border-b border-black font-semibold">{person.playerName}</td>
             <td className="border-b border-black font-semibold">{person.difficulty}</td>
             <td className="border-b border-black font-semibold">{person.finalScore}</td>

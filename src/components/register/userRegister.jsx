@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { useAuth } from '../context/authContext'
 import { useNavigate } from 'react-router-dom'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const UserRegister = () => {
 
   const [user, setUser] = useState({
@@ -18,16 +21,50 @@ const UserRegister = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    try {
-      await signup(user.email, user.password);
-      navigate('/');
+    try { 
+        await signup(user.email, user.password);
+        navigate('/')
     } catch(error) {
-      setError(error.message);
+      console.log(error.code)
+      if(error.code === "auth/invalid-email"){
+        toast.info('Invalid Email', {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: false,
+        })
+        setError('Invalid Email');
+      }
+      if(error.code === "auth/email-already-in-use"){
+        toast.info('Email in Use', {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: false,
+        })
+        setError('Email in Use');
+      }
+      if(error.code === "auth/weak-password"){
+        toast.info('Weak Password', {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: false,
+        })
+        setError('Weak Password');
+      }
+      if(error.code === "auth/weak-password"){
+        toast.info('At least 6 characters', {
+          position: "top-center",
+          autoClose: 2000,
+          pauseOnHover: false,
+        })
+        setError('Weak Password');
+      }
     }
   }
 
   return (
-    <div>
+    <div className=" flex flex-col bg-slate-700 h-[100vh] text-center">
+      
+      <ToastContainer />
       {error && <p>{error}</p>}
 
       <form onSubmit={handleSubmit}>
@@ -49,7 +86,6 @@ const UserRegister = () => {
           placeholder="******" 
           onChange={handleChange}
         />
-
         <button>
           Register
         </button>

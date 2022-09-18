@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, Fragment } from 'react'
+import { Helmet } from 'react-helmet'
 import OpctionCategory from './OptionCategory'
 import InputNumQuestion from './InputNumQuestion'
 import OpctionDifficulty from './OptionDifficulty'
@@ -24,7 +25,7 @@ const FirstQuiz = () => {
   const getPlayerName = (value) => {
     setPlayerName(value)
     localStorage.setItem('Playername', value)
-  }
+    }
 
   const getQuiz = ()=> {
     if(!quizDiff){
@@ -66,6 +67,12 @@ const FirstQuiz = () => {
   }
 
   return (
+    <Fragment>
+    <Helmet>
+      <title>
+          FirstQuiz       
+      </title>
+    </Helmet>
     <div className="bg-slate-700 h-[100vh] text-center">
       <ToastContainer />
       <h1 className="italic hover:not-italic text-center text-8xl mb-6">FirstQuiz</h1>
@@ -110,6 +117,7 @@ const FirstQuiz = () => {
         </div>
       </section>
     </div>
+    </Fragment>
   )
 }
 

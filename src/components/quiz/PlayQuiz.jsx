@@ -19,7 +19,6 @@ const PlayQuiz = () => {
   const [playerName, setPlayerName] = useState('')
   const databaseref = collection(database, 'Leader Board')
 
-
   useEffect(() => {
     const { quizData, quizCount, quizType, quizDiff } = state
     setQuestionsArray(quizData)

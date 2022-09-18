@@ -21,14 +21,14 @@ function App() {
       <div className="App">
         <AuthProvider>
           <Routes>
-            <Route path="/" element={
-              <ProtectedRoute>
-                <LandingPage />
-              </ProtectedRoute>
-            }></Route>
+            <Route path="/" element={<LandingPage />}></Route>
             <Route path="/signup" element={<UserRegister />}></Route>
             <Route path="/login" element={<UserLogin />}></Route>
-            <Route path="/quiz" element={<FirstQuiz />}></Route>
+            <Route path="/quiz" element={
+              //<ProtectedRoute>
+                <FirstQuiz />
+              //</ProtectedRoute>
+            }></Route>
             <Route path="/quiz/play" element={<PlayQuiz />}></Route>
             <Route path="/quiz/results" element={<Results />}></Route>
           </Routes>
