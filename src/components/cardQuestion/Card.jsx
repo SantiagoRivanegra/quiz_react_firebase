@@ -1,8 +1,9 @@
-import React, { useRef, Fragment } from 'react'
-import { Helmet } from 'react-helmet'
+import React, { Fragment } from 'react'
 
-import correctSound from '../../assets/sounds/correct-answer.mp3'
-import wrongSound from '../../assets/sounds/wrong-answer.mp3'
+import useSound from 'use-sound'
+
+import correctSound from '../../assets/sounds/correct-sound.mp3'
+import wrongSound from '../../assets/sounds/wrong-sound.mp3'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,20 +15,25 @@ const Card = ({
   setResult,
   result
 }) => {
-  const ref = useRef()
+  const [ playCorrect ] = useSound(correctSound, {
+    volume: 0.1
+  })
+  const [ playWrong ] = useSound(wrongSound, {
+    volume: 0.1
+  })
 
   const handleOption = (option) => {
     let correctAnswer = (questionsArray[questionCounter-1].correct_answer)
 
-    if((correctAnswer) === option){ 
-      document.getElementById('correct-sound').play()     
+    if((correctAnswer) === option){
+      playCorrect()
       toast.success('Right answer', {
         position: "top-right",
         autoClose: 300,
       })
       setResult(result + 1)
     } else {
-      document.getElementById('wrong-sound').play()   
+      playWrong()   
       toast.error('Wrong answer', {
         position: "top-right",
         autoClose: 300,
