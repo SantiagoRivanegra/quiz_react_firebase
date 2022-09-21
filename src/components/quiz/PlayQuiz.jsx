@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
+import { Helmet } from 'react-helmet'
 
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -51,10 +52,16 @@ const PlayQuiz = () => {
   }
 
   return (
+    <Fragment>
+        <Helmet>
+          <title>
+              Play Quiz        
+          </title>
+        </Helmet>
     <div className="flex flex-col 
-    bg-slate-700 h-[100vh]">
-      <h1 className="mb-6 text-center text-4xl border-b border-slate-900 italic hover:not-italic">PlayQuiz</h1>
-      <h2 className="text-center mb-4 text-2xl font-semibold">Your Current Score: {result}</h2>
+    bg-slate-700 h-[100vh] items-center">
+      <h1 className="mb-6 text-4xl border-b border-slate-900 italic hover:not-italic">PlayQuiz</h1>
+      <h2 className="mb-4 text-2xl font-semibold">Your Current Score: {result}</h2>
       <h2 className="mb-4 text-2xl font-semibold">Question Number: {questionCounter} of {totalQuiz}</h2>
       <h2 className="mb-4 text-2xl font-semibold">Difficulty Level: {quizDiff}</h2>
 
@@ -76,6 +83,7 @@ const PlayQuiz = () => {
       )}
 
     </div>
+    </Fragment>
   )
 }
 

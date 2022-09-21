@@ -52,8 +52,8 @@ const Card = ({
       </Fragment>
     <div className="text-center">
       {questionsArray.length >= 1 ? (
-        <section>
-          <h2 className="text-left mb-4 text-2xl font-semibold">Category: {questionsArray[questionCounter - 1].category}</h2>      
+        <section className="flex flex-col items-center">
+          <h2 className="items-left mb-4 text-2xl font-semibold">Category: {questionsArray[questionCounter - 1].category}</h2>      
           
           <h2 className="items-center font-bold">Question: {questionsArray[questionCounter - 1].question}</h2>
           {[

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Fragment } from 'react'
+import { Helmet } from 'react-helmet'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 import { database } from '../../firebase-config'
@@ -32,6 +33,12 @@ const Results = () => {
   }
 
   return (
+    <Fragment>
+        <Helmet>
+          <title>
+              Leader board        
+          </title>
+        </Helmet>
     <div className="bg-slate-700 h-[100vh] text-center">
 
       <div className="flex flex-col relative">
@@ -74,6 +81,7 @@ const Results = () => {
         </tbody>
       </table>
     </div>
+    </Fragment>
   )
 }
 

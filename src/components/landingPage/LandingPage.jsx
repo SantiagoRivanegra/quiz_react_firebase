@@ -13,7 +13,7 @@ const LandingPage = () => {
           </title>
         </Helmet>
         <div className="bg-origin-border h-screen w-screen bg-bg-landing bg-cover bg-no-repeat bg-center flex items-center justify-around">
-          <section className="bg-gray-500/50 h-[80%] w-[35%] pl-8 pr-8">
+          <section className="flex flex-col  bg-gray-500/50 h-[80%] w-[35%] pl-8 pr-8">
             <div className="flex justify-center">
               <span><HiOutlineCube className="text-9xl"/></span>
             </div>
@@ -22,7 +22,7 @@ const LandingPage = () => {
               {/* <Link to='/home'> */}
               <Link to='/quiz'>
                 <button 
-                  className="btn btn-primary border-[1px] border-black bg-green-800 rounded-[30px] cursor-pointer p-4 block text-center transition-3000 ease-linear w-[100%] hover:bg-green-900"
+                  className="btn btn-primary border-[1px] border-black bg-green-800 rounded-[30px] cursor-pointer p-4 block text-center mt-24 transition-3000 ease-linear w-[100%] hover:bg-green-900"
                 >Play</button>
               </Link>
             </div>
